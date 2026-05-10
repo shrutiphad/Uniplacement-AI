@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "axios": "^1.15.0",
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "helmet": "^8.1.0",
+    "joi": "^18.1.2",
+    "jsonwebtoken": "^9.0.3",
+    "md5": "^2.3.0",
+    "mongodb": "^7.1.1",
+    "mongoose": "^9.4.1",
+    "morgan": "^1.10.1",
+    "multer": "^2.1.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "openai": "^6.34.0",
+    "pdf-parse": "^2.4.5",
+    "pdf-parser": "^1.0.5",
+    "react-hot-toast": "^2.6.0",
+    "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
