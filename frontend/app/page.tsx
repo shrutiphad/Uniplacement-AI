@@ -18,12 +18,7 @@ const FEATURES = [
   { icon: Users,        title: 'Role-Based Access',     desc: 'Distinct Admin and Student portals with JWT-secured routes and full lifecycle management capabilities.' },
 ];
 
-const STATS = [
-  { value: '500+', label: 'Students Placed' },
-  { value: '50+',  label: 'Partner Companies' },
-  { value: '94%',  label: 'Placement Rate' },
-  { value: '4.9★', label: 'Student Rating' },
-];
+
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Build Your Profile',    desc: 'Register, add your skills, CGPA, department, and upload your resume PDF.' },
@@ -100,18 +95,11 @@ export default function HomePage() {
           </div>
 
        
-          <div className="mt-20 flex flex-wrap justify-center gap-3">
-            {STATS.map((s) => (
-              <div key={s.label} className="bg-dark-800/80 border border-dark-600 rounded-2xl px-6 py-4 backdrop-blur-sm">
-                <div className="font-display text-2xl font-bold text-brand-400">{s.value}</div>
-                <div className="text-xs text-dark-400 mt-0.5">{s.label}</div>
-              </div>
-            ))}
-          </div>
+    
         </div>
       </section>
 
-      {/* ── Features ───────────────────────────────────────── */}
+  
       <section id="features" className="py-32 max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <div className="badge bg-brand-500/10 text-brand-400 border-brand-500/20 mb-4">Platform Features</div>
@@ -136,7 +124,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── How It Works ───────────────────────────────────── */}
+      {/*  How It Works  */}
       <section id="how-it-works" className="py-32 bg-dark-900/50 border-y border-dark-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -162,7 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ────────────────────────────────────────────── */}
+      {/*  CTA  */}
       <section className="py-32 max-w-4xl mx-auto px-6 text-center">
         <div className="card p-16 glow-brand-lg border-brand-500/20 bg-gradient-to-b from-dark-800 to-dark-900">
           <TrendingUp className="w-12 h-12 text-brand-400 mx-auto mb-6 animate-float" />
@@ -188,7 +176,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Footer ─────────────────────────────────────────── */}
+      {/*  Footer  */}
       <footer className="border-t border-dark-800 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
