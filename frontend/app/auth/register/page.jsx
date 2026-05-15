@@ -49,14 +49,14 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label className="label">Full Name</label>
-              <input type="text" placeholder="Arjun Sharma" className={errors.name ? 'input-error' : 'input'}
+              <input type="text" placeholder="Shruti Phad" className={errors.name ? 'input-error' : 'input'}
                 {...register('name', { required: 'Name is required', minLength: { value: 2, message: 'Too short' } })} />
               {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name.message}</p>}
             </div>
 
             <div>
               <label className="label">Email Address</label>
-              <input type="email" placeholder="you@university.edu" className={errors.email ? 'input-error' : 'input'}
+              <input type="email" placeholder="shruti@gmail.com" className={errors.email ? 'input-error' : 'input'}
                 {...register('email', { required: 'Email is required', pattern: { value: /^\S+@\S+\.\S+$/, message: 'Invalid email' } })} />
               {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email.message}</p>}
             </div>

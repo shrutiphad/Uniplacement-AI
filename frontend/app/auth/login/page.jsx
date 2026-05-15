@@ -20,7 +20,7 @@ export default function LoginPage() {
       setValue('email', 'admin@uniplacement.ai');
       setValue('password', 'Admin@123456');
     } else {
-      setValue('email', 'arjun@student.edu');
+      setValue('email', 'shruti@gmail.com');
       setValue('password', 'Student@123');
     }
   };
@@ -32,7 +32,7 @@ export default function LoginPage() {
       toast.success(`Welcome back, ${user.name.split(' ')[0]}!`);
       router.push(user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard');
     } catch (err) {
-      toast.error(err.response?.data?.message || 'Login failed. Please try again.');
+      toast.error(err.response?.data?.message || 'Student does not exist. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -68,7 +68,7 @@ export default function LoginPage() {
               <label className="label">Email address</label>
               <input
                 type="email"
-                placeholder="you@university.edu"
+                placeholder="you@university.com"
                 className={errors.email ? 'input-error' : 'input'}
                 {...register('email', {
                   required: 'Email is required',

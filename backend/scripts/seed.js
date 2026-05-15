@@ -28,8 +28,8 @@ const seed = async () => {
   // Sample Students
   const students = await User.insertMany([
     {
-      name: 'Arjun Sharma',
-      email: 'arjun@student.edu',
+      name: 'Arjun Sha',
+      email: 'shruti@gmail.com',
       password: await bcrypt.hash('Student@123', 12),
       role: 'student',
       department: 'Computer Science',
