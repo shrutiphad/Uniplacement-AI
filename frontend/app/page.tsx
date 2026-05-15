@@ -89,9 +89,9 @@ export default function HomePage() {
             <Link href="/auth/register" className="btn-primary text-base px-8 py-3.5 glow-brand">
               Start Your Journey <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/auth/login?demo=admin" className="btn-secondary text-base px-8 py-3.5">
+            {/* <Link href="/auth/login?demo=admin" className="btn-secondary text-base px-8 py-3.5">
               View Admin Demo
-            </Link>
+            </Link> */}
           </div>
 
        
@@ -164,9 +164,9 @@ export default function HomePage() {
             <Link href="/auth/register" className="btn-primary text-base px-8 py-3.5">
               Register as Student <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link href="/auth/login" className="btn-secondary text-base px-8 py-3.5">
+            {/* <Link href="/auth/login" className="btn-secondary text-base px-8 py-3.5">
               Admin Portal
-            </Link>
+            </Link> */}
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-dark-400">
             {['No setup cost', 'Instant AI analysis', 'Role-based dashboards'].map((t) => (
@@ -185,7 +185,7 @@ export default function HomePage() {
             </div>
             <span className="font-display font-bold text-white">UniPlacement <span className="text-brand-400">AI</span></span>
           </div>
-          <p className="text-dark-500 text-sm">© 2025 UniPlacement AI. Built for campus excellence.</p>
+          <p className="text-dark-500 text-sm">2026 UniPlacement AI by SHRUTI PHAD. <br></br> Built for campus excellence.</p>
         </div>
       </footer>
     </div>
