@@ -106,9 +106,9 @@ export default function HomePage() {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
             Everything your placement cell needs
           </h2>
-          <p className="text-dark-400 text-lg max-w-xl mx-auto">
+          {/* <p className="text-dark-400 text-lg max-w-xl mx-auto">
             From company onboarding to student readiness — one intelligent platform handles it all.
-          </p>
+          </p> */}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
