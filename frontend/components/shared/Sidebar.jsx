@@ -16,7 +16,7 @@ const ADMIN_LINKS = [
   { href: '/admin/applications',    icon: ClipboardList,    label: 'Applications' },
   { href: '/admin/students',        icon: Users,            label: 'Students' },
   { href: '/admin/analytics',       icon: BarChart3,        label: 'Analytics' },
-  { href: '/admin/semantic-search', icon: Search,           label: 'AI Resume Search', badge: 'AI' },
+  // { href: '/admin/semantic-search', icon: Search,           label: 'AI Resume Search', badge: 'AI' },
 ];
 
 const STUDENT_LINKS = [
