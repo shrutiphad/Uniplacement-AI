@@ -25,7 +25,7 @@ const STUDENT_LINKS = [
   { href: '/student/applications',   icon: FileText,         label: 'My Applications' },
   { href: '/student/ai-resume',      icon: Sparkles,         label: 'AI Resume', badge: 'AI' },
   // { href: '/student/interview-prep', icon: BookOpen,         label: 'Interview Prep', badge: 'AI' },
-  { href: '/student/leaderboard',    icon: Trophy,           label: 'Leaderboard' },
+  // { href: '/student/leaderboard',    icon: Trophy,           label: 'Leaderboard' },
   { href: '/student/profile',        icon: Settings,         label: 'Profile' },
 ];
 
