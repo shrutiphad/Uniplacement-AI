@@ -67,8 +67,23 @@ export default function AIResumePage() {
 
   const selCoData = companies.find(c => c._id === selCo);
 
-  const analyze = async (force = false) => {
-    if (!user?.resumeURL) { toast.error('Upload your resume in Profile first!'); return; }
+  // const analyze = async (force = false) => {
+  //   if (!user?.resumeURL) { toast.error('Upload your resume in Profile first!'); return; }
+
+    const analyze = async (force = false) => {
+  // Wait for user to fully load
+  if (!user) {
+    toast.error('Loading user data...');
+    return;
+  }
+  
+  if (!user.resumeURL) { 
+    toast.error('Upload your resume in Profile first!'); 
+    return; 
+  }
+ 
+
+    
     setLoading(true); setResult(null);
     try {
       const { data } = await aiApi.analyzeResume({
