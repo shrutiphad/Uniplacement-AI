@@ -26,12 +26,32 @@ exports.aiRateLimiter = rateLimit({
   message: { success: false, message: 'AI request limit reached. Try again in an hour.' },
 });
 
-//  Helper: parse PDF from URL 
-const parsePDFFromURL = async (url) => {
-  const resp = await axios.get(url, { responseType: 'arraybuffer', timeout: 15000 });
-  const data = await pdfParse(Buffer.from(resp.data));
-  if (!data.text || data.text.trim().length < 50) throw new Error('PDF appears empty or unreadable');
-  return data.text;
+//  Helper parse PDF from URL 
+// const parsePDFFromURL = async (url) => {
+//   const resp = await axios.get(url, { responseType: 'arraybuffer', timeout: 15000 });
+//   const data = await pdfParse(Buffer.from(resp.data));
+//   if (!data.text || data.text.trim().length < 50) throw new Error('PDF appears empty or unreadable');
+//   return data.text;
+// };
+
+const parsePDFFromURL = async (url, retries = 2) => {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const resp = await axios.get(url, { 
+        responseType: 'arraybuffer', 
+        timeout: 15000 
+      });
+      const data = await pdfParse(Buffer.from(resp.data));
+      if (!data.text || data.text.trim().length < 50) {
+        throw new Error('PDF appears empty or is scanned (image-based). Please upload a text-based PDF.');
+      }
+      return data.text;
+    } catch (err) {
+      if (i === retries) throw err;
+      console.warn(`[PDF Parse] Attempt ${i + 1} failed, retrying...`);
+      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
+    }
+  }
 };
 
 //  POST /api/ai/analyze-resume 
