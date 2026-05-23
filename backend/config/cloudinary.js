@@ -29,4 +29,13 @@ const upload = multer({
   },
 });
 
+router.get('/test-cloudinary', async (req, res) => {
+  try {
+    const result = await cloudinary.api.ping();
+    res.json({ success: true, cloudinary: result });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = { cloudinary, upload };
