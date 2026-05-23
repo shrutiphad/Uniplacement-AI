@@ -79,9 +79,25 @@ export default function AIResumePage() {
       setResult(data);
       if (data.readinessScore) updateLocalUser({ readinessScore: data.readinessScore });
       toast.success(data.cached ? 'Cached analysis loaded' : 'Deep AI analysis complete 🎯');
-    } catch (err) {
-      toast.error(err.response?.data?.message || 'Analysis failed. Try again.');
-    } finally { setLoading(false); }
+    }
+    //  catch (err) {
+    //   toast.error(err.response?.data?.message || 'Analysis failed. Try again.');
+    // } finally { setLoading(false); }
+    
+  catch (err) {
+  const msg = err.response?.data?.message || err.message || 'Analysis failed';
+  console.error('[AI Resume] Error:', err.response?.data || err);
+  
+  if (err.response?.status === 422) {
+    toast.error(`PDF Error: ${msg}. Try re-uploading your resume as a text-based PDF.`);
+  } else if (err.response?.status === 429) {
+    toast.error('OpenAI rate limit reached. Please wait a few minutes and try again.');
+  } else if (err.response?.status === 400 && msg.includes('No resume')) {
+    toast.error('No resume found. Please upload your resume in Profile first.');
+  } else {
+    toast.error(`Analysis failed: ${msg}`);
+  }
+}
   };
 
   const a   = result?.analysis;
