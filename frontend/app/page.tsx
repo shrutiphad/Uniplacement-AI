@@ -157,9 +157,9 @@ export default function HomePage() {
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
             Ready to transform placements?
           </h2>
-          <p className="text-dark-400 text-lg mb-10 max-w-xl mx-auto">
+          {/* <p className="text-dark-400 text-lg mb-10 max-w-xl mx-auto">
             Join hundreds of students and placement coordinators already using UniPlacement AI.
-          </p>
+          </p> */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/register" className="btn-primary text-base px-8 py-3.5">
               Register as Student <ArrowRight className="w-5 h-5" />
