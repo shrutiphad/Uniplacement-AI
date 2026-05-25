@@ -97,9 +97,9 @@ export default function LoginPage() {
 
             <button type="submit" disabled={loading} className="btn-primary w-full justify-center py-3 mt-2">
               {loading ? (
-                <><Loader2 className="w-4 h-4 animate-spin" /> Signing in...</>
+                <><Loader2 className="w-4 h-4 animate-spin" /> Login in...</>
               ) : (
-                <><LogIn className="w-4 h-4" /> Sign In</>
+                <><LogIn className="w-4 h-4" /> Login</>
               )}
             </button>
           </form>

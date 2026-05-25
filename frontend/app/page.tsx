@@ -107,7 +107,7 @@ export default function HomePage() {
             Everything your placement cell needs
           </h2>
           <p className="text-dark-400 text-lg max-w-xl mx-auto">
-            From company onboarding to student readiness — one intelligent platform handles it all.
+            From company onboarding to student readiness, one intelligent platform handles it all.
           </p>
         </div>
 
