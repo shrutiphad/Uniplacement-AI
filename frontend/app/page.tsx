@@ -185,7 +185,7 @@ export default function HomePage() {
             </div>
             <span className="font-display font-bold text-white">UniPlacement <span className="text-brand-400">AI</span></span>
           </div>
-          <p className="text-dark-500 text-sm">2026 UniPlacement AI by SHRUTI PHAD. <br></br> Built for campus excellence.</p>
+          <p className="text-dark-500 text-sm">2026 UniPlacement by SHRUTI PHAD. <br></br> Built for campus excellence.</p>
         </div>
       </footer>
     </div>
