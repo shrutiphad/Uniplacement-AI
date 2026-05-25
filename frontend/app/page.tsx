@@ -155,7 +155,7 @@ export default function HomePage() {
         <div className="card p-16 glow-brand-lg border-brand-500/20 bg-gradient-to-b from-dark-800 to-dark-900">
           <TrendingUp className="w-12 h-12 text-brand-400 mx-auto mb-6 animate-float" />
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-            Ready to transform placements?
+            Escape the generic placement workflow!
           </h2>
           {/* <p className="text-dark-400 text-lg mb-10 max-w-xl mx-auto">
             Join hundreds of students and placement coordinators already using UniPlacement AI.
