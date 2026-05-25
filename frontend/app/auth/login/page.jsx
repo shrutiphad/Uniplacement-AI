@@ -50,7 +50,7 @@ export default function LoginPage() {
             <span className="font-display font-bold text-xl text-white">UniPlacement<span className="text-brand-400"> AI</span></span>
           </Link>
           <h1 className="font-display text-3xl font-bold text-white">Welcome back</h1>
-          <p className="text-dark-400 mt-2 text-sm">Sign in to your account to continue</p>
+          <p className="text-dark-400 mt-2 text-sm">Login to your account to continue</p>
         </div>
 
         <div className="card p-3 mb-5 flex gap-2">
