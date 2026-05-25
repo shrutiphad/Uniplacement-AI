@@ -56,7 +56,7 @@ export default function HomePage() {
             <a href="#stats" className="hover:text-dark-100 transition-colors">Impact</a>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/auth/login" className="btn-ghost text-sm">Sign In</Link>
+            <Link href="/auth/login" className="btn-ghost text-sm">Login</Link>
             <Link href="/auth/register" className="btn-primary text-sm">Get Started <ChevronRight className="w-4 h-4" /></Link>
           </div>
         </div>
