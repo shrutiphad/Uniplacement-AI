@@ -53,7 +53,7 @@ export default function HomePage() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-dark-400">
             <a href="#features" className="hover:text-dark-100 transition-colors">Features</a>
             <a href="#how-it-works" className="hover:text-dark-100 transition-colors">How it works</a>
-            <a href="#stats" className="hover:text-dark-100 transition-colors">Impact</a>
+            <a href="#stats" className="hover:text-dark-100 transition-colors">Impact!</a>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/auth/login" className="btn-ghost text-sm">Login</Link>
