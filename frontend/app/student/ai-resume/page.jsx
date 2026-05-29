@@ -146,7 +146,7 @@ export default function AIResumePage() {
           <div>
             <label className="label">Company <span className="text-dark-600">(optional)</span></label>
             <select className="input" value={selCo} onChange={e => { setSelCo(e.target.value); setSelRole(''); }}>
-              <option value="">General / No JD Analysis</option>
+              <option value="">General / No Job Description Analysis</option>
               {companies.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
             </select>
           </div>
