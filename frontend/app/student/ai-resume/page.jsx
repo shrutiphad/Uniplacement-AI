@@ -144,7 +144,7 @@ export default function AIResumePage() {
       <div className="card p-6 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            
+
             <label className="label">Company <span className="text-dark-600">(optional)</span></label>
             <select className="input" value={selCo} onChange={e => { setSelCo(e.target.value); setSelRole(''); }}>
               <option value="">General / No JD Analysis</option>
@@ -169,7 +169,7 @@ export default function AIResumePage() {
         </div>
         <div className="flex gap-3">
           <button onClick={() => analyze(false)} disabled={loading || !user?.resumeURL} className="btn-primary flex-1 justify-center py-3">
-            {loading ? <><Loader2 className="w-4 h-4 animate-spin"/>Running RAG pipeline...</> : <><Sparkles className="w-4 h-4"/>Analyze Resume</>}
+            {loading ? <><Loader2 className="w-4 h-4 animate-spin"/>Running RAG Analysis pipeline...</> : <><Sparkles className="w-4 h-4"/>Analyze Resume</>}
           </button>
           {result && (
             <button onClick={() => analyze(true)} disabled={loading} className="btn-secondary px-4" title="Force fresh analysis">
