@@ -420,7 +420,7 @@ export default function AIResumePage() {
             </div>
             <div className="flex-1">
               <p className="font-medium text-white">Ready to prep for the interview?</p>
-              <p className="text-dark-500 text-sm">Generate role-specific questions, coding problems & a 14-day roadmap</p>
+              <p className="text-dark-500 text-sm">Generate role-specific questions, coding problems & a roadmap</p>
             </div>
             <Link href="/student/interview-prep" className="btn-primary text-sm shrink-0">
               Prep Now <ArrowRight className="w-4 h-4"/>
