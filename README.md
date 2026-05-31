@@ -192,16 +192,6 @@ npm run dev
 
 Visit **http://localhost:3000**
 
-#### Demo Login Credentials
-
-| Role    | Email                    | Password      |
-|---------|--------------------------|---------------|
-| Admin   | admin@uniplacement.ai    | Admin@123456  |
-| Student | arjun@student.edu        | Student@123   |
-| Student | priya@student.edu        | Student@123   |
-| Student | rahul@student.edu        | Student@123   |
-
----
 
 ## External Services Setup
 
