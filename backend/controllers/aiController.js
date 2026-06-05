@@ -26,41 +26,12 @@ exports.aiRateLimiter = rateLimit({
   message: { success: false, message: 'AI request limit reached. Try again in an hour.' },
 });
 
-<<<<<<< HEAD
 //  Helper: parse PDF from URL 
 const parsePDFFromURL = async (url) => {
   const resp = await axios.get(url, { responseType: 'arraybuffer', timeout: 15000 });
   const data = await pdfParse(Buffer.from(resp.data));
   if (!data.text || data.text.trim().length < 50) throw new Error('PDF appears empty or unreadable');
   return data.text;
-=======
-//  Helper parse PDF from URL 
-// const parsePDFFromURL = async (url) => {
-//   const resp = await axios.get(url, { responseType: 'arraybuffer', timeout: 15000 });
-//   const data = await pdfParse(Buffer.from(resp.data));
-//   if (!data.text || data.text.trim().length < 50) throw new Error('PDF appears empty or unreadable');
-//   return data.text;
-// };
-
-const parsePDFFromURL = async (url, retries = 2) => {
-  for (let i = 0; i <= retries; i++) {
-    try {
-      const resp = await axios.get(url, { 
-        responseType: 'arraybuffer', 
-        timeout: 15000 
-      });
-      const data = await pdfParse(Buffer.from(resp.data));
-      if (!data.text || data.text.trim().length < 50) {
-        throw new Error('PDF appears empty or is scanned (image-based). Please upload a text-based PDF.');
-      }
-      return data.text;
-    } catch (err) {
-      if (i === retries) throw err;
-      console.warn(`[PDF Parse] Attempt ${i + 1} failed, retrying...`);
-      await new Promise(r => setTimeout(r, 1000 * (i + 1)));
-    }
-  }
->>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
 };
 
 //  POST /api/ai/analyze-resume 
@@ -79,11 +50,6 @@ exports.analyzeResume = async (req, res, next) => {
     }
 
     // Parse resume PDF
-<<<<<<< HEAD
-    let resumeText;
-    try { resumeText = await parsePDFFromURL(student.resumeURL); }
-    catch (err) { return errorResponse(res, `PDF parse failed: ${err.message}`, 422); }
-=======
     // let resumeText;
     // try { resumeText = await parsePDFFromURL(student.resumeURL); }
     // catch (err) { return errorResponse(res, `PDF parse failed: ${err.message}`, 422); }
@@ -97,7 +63,6 @@ try {
   console.error('[AI] PDF parse error:', err);
   return errorResponse(res, `PDF parse failed: ${err.message}. Ensure PDF is text-based (not scanned).`, 422); 
 }
->>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
 
     // Role context
     let requiredSkills = [];

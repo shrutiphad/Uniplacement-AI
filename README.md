@@ -192,19 +192,6 @@ npm run dev
 
 Visit **http://localhost:3000**
 
-<<<<<<< HEAD
-#### Demo Login Credentials
-
-| Role    | Email                    | Password      |
-|---------|--------------------------|---------------|
-| Admin   | admin@uniplacement.ai    | Admin@123456  |
-| Student | arjun@student.edu        | Student@123   |
-| Student | priya@student.edu        | Student@123   |
-| Student | rahul@student.edu        | Student@123   |
-
----
-=======
->>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
 
 ## External Services Setup
 
@@ -349,8 +336,4 @@ curl -X POST http://localhost:5000/api/auth/login \
 
 ---
 
-<<<<<<< HEAD
 Built with for UniPlacement 
-=======
-Built with for UniPlacement 
->>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
