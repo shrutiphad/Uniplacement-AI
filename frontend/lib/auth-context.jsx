@@ -9,11 +9,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-<<<<<<< HEAD
-  // ─── Init: Load user from localStorage ─────────────────
-=======
   //  Init Load user from localStorage 
->>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     const token = localStorage.getItem('accessToken');
