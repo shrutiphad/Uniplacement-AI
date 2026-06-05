@@ -18,12 +18,16 @@ const FEATURES = [
   { icon: Users,        title: 'Role-Based Access',     desc: 'Distinct Admin and Student portals with JWT-secured routes and full lifecycle management capabilities.' },
 ];
 
+<<<<<<< HEAD
 const STATS = [
   { value: '500+', label: 'Students Placed' },
   { value: '50+',  label: 'Partner Companies' },
   { value: '94%',  label: 'Placement Rate' },
   { value: '4.9★', label: 'Student Rating' },
 ];
+=======
+
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
 
 const HOW_IT_WORKS = [
   { step: '01', title: 'Build Your Profile',    desc: 'Register, add your skills, CGPA, department, and upload your resume PDF.' },
@@ -58,10 +62,17 @@ export default function HomePage() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-dark-400">
             <a href="#features" className="hover:text-dark-100 transition-colors">Features</a>
             <a href="#how-it-works" className="hover:text-dark-100 transition-colors">How it works</a>
+<<<<<<< HEAD
             <a href="#stats" className="hover:text-dark-100 transition-colors">Impact</a>
           </div>
           <div className="flex items-center gap-3">
             <Link href="/auth/login" className="btn-ghost text-sm">Sign In</Link>
+=======
+            <a href="#stats" className="hover:text-dark-100 transition-colors">Impact!</a>
+          </div>
+          <div className="flex items-center gap-3">
+            <Link href="/auth/login" className="btn-ghost text-sm">Login</Link>
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
             <Link href="/auth/register" className="btn-primary text-sm">Get Started <ChevronRight className="w-4 h-4" /></Link>
           </div>
         </div>
@@ -87,13 +98,18 @@ export default function HomePage() {
 
           <p className="max-w-2xl mx-auto text-dark-400 text-lg md:text-xl leading-relaxed mb-12 animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Digitize your entire campus placement lifecycle. AI matches students to roles,
+<<<<<<< HEAD
             analyzes resumes, and prepares candidates for technical interviews — all in one platform.
+=======
+            analyzes resumes, and prepares candidates for technical interviews all in one platform.
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Link href="/auth/register" className="btn-primary text-base px-8 py-3.5 glow-brand">
               Start Your Journey <ArrowRight className="w-5 h-5" />
             </Link>
+<<<<<<< HEAD
             <Link href="/auth/login?demo=admin" className="btn-secondary text-base px-8 py-3.5">
               View Admin Demo
             </Link>
@@ -112,6 +128,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Features ───────────────────────────────────────── */}
+=======
+            {/* <Link href="/auth/login?demo=admin" className="btn-secondary text-base px-8 py-3.5">
+              View Admin Demo
+            </Link> */}
+          </div>
+
+       
+    
+        </div>
+      </section>
+
+  
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       <section id="features" className="py-32 max-w-7xl mx-auto px-6">
         <div className="text-center mb-20">
           <div className="badge bg-brand-500/10 text-brand-400 border-brand-500/20 mb-4">Platform Features</div>
@@ -119,7 +148,11 @@ export default function HomePage() {
             Everything your placement cell needs
           </h2>
           <p className="text-dark-400 text-lg max-w-xl mx-auto">
+<<<<<<< HEAD
             From company onboarding to student readiness — one intelligent platform handles it all.
+=======
+            From company onboarding to student readiness, one intelligent platform handles it all.
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           </p>
         </div>
 
@@ -136,7 +169,11 @@ export default function HomePage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* ── How It Works ───────────────────────────────────── */}
+=======
+      {/*  How It Works  */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       <section id="how-it-works" className="py-32 bg-dark-900/50 border-y border-dark-800">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
@@ -162,23 +199,41 @@ export default function HomePage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* ── CTA ────────────────────────────────────────────── */}
+=======
+      {/*  CTA  */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       <section className="py-32 max-w-4xl mx-auto px-6 text-center">
         <div className="card p-16 glow-brand-lg border-brand-500/20 bg-gradient-to-b from-dark-800 to-dark-900">
           <TrendingUp className="w-12 h-12 text-brand-400 mx-auto mb-6 animate-float" />
           <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+<<<<<<< HEAD
             Ready to transform placements?
           </h2>
           <p className="text-dark-400 text-lg mb-10 max-w-xl mx-auto">
             Join hundreds of students and placement coordinators already using UniPlacement AI.
           </p>
+=======
+            Escape the generic placement workflow!
+          </h2>
+          {/* <p className="text-dark-400 text-lg mb-10 max-w-xl mx-auto">
+            Join hundreds of students and placement coordinators already using UniPlacement AI.
+          </p> */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/auth/register" className="btn-primary text-base px-8 py-3.5">
               Register as Student <ArrowRight className="w-5 h-5" />
             </Link>
+<<<<<<< HEAD
             <Link href="/auth/login" className="btn-secondary text-base px-8 py-3.5">
               Admin Portal
             </Link>
+=======
+            {/* <Link href="/auth/login" className="btn-secondary text-base px-8 py-3.5">
+              Admin Portal
+            </Link> */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-4 text-sm text-dark-400">
             {['No setup cost', 'Instant AI analysis', 'Role-based dashboards'].map((t) => (
@@ -188,7 +243,11 @@ export default function HomePage() {
         </div>
       </section>
 
+<<<<<<< HEAD
       {/* ── Footer ─────────────────────────────────────────── */}
+=======
+      {/*  Footer  */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       <footer className="border-t border-dark-800 py-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
@@ -197,7 +256,11 @@ export default function HomePage() {
             </div>
             <span className="font-display font-bold text-white">UniPlacement <span className="text-brand-400">AI</span></span>
           </div>
+<<<<<<< HEAD
           <p className="text-dark-500 text-sm">© 2025 UniPlacement AI. Built for campus excellence.</p>
+=======
+          <p className="text-dark-500 text-sm">2026 UniPlacement by SHRUTI PHAD. <br></br> Built for campus excellence.</p>
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
         </div>
       </footer>
     </div>

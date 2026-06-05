@@ -64,13 +64,21 @@ export default function LeaderboardPage() {
           </h1>
           <p className="text-dark-400 mt-1">Ranked by readiness score, CGPA, and skill coverage</p>
         </div>
+<<<<<<< HEAD
         {myRank > 0 && (
+=======
+        {/* {myRank > 0 && (
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           <div className="card px-5 py-3 text-center border-brand-500/20 shrink-0">
             <p className="text-dark-500 text-xs mb-1">Your Rank</p>
             <p className="font-display text-2xl font-bold text-brand-400">#{myRank}</p>
             <p className="text-dark-600 text-xs">of {students.length}</p>
           </div>
+<<<<<<< HEAD
         )}
+=======
+        )} */}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       </div>
 
       {/* Top 3 podium */}

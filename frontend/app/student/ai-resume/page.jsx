@@ -67,8 +67,28 @@ export default function AIResumePage() {
 
   const selCoData = companies.find(c => c._id === selCo);
 
+<<<<<<< HEAD
   const analyze = async (force = false) => {
     if (!user?.resumeURL) { toast.error('Upload your resume in Profile first!'); return; }
+=======
+  // const analyze = async (force = false) => {
+  //   if (!user?.resumeURL) { toast.error('Upload your resume in Profile first!'); return; }
+
+    const analyze = async (force = false) => {
+  // Wait for user to fully load
+  if (!user) {
+    toast.error('Loading user data...');
+    return;
+  }
+  
+  if (!user.resumeURL) { 
+    toast.error('Upload your resume in Profile first!'); 
+    return; 
+  }
+ 
+
+    
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
     setLoading(true); setResult(null);
     try {
       const { data } = await aiApi.analyzeResume({
@@ -79,9 +99,31 @@ export default function AIResumePage() {
       setResult(data);
       if (data.readinessScore) updateLocalUser({ readinessScore: data.readinessScore });
       toast.success(data.cached ? 'Cached analysis loaded' : 'Deep AI analysis complete 🎯');
+<<<<<<< HEAD
     } catch (err) {
       toast.error(err.response?.data?.message || 'Analysis failed. Try again.');
     } finally { setLoading(false); }
+=======
+    }
+    //  catch (err) {
+    //   toast.error(err.response?.data?.message || 'Analysis failed. Try again.');
+    // } finally { setLoading(false); }
+    
+  catch (err) {
+  const msg = err.response?.data?.message || err.message || 'Analysis failed';
+  console.error('[AI Resume] Error:', err.response?.data || err);
+  
+  if (err.response?.status === 422) {
+    toast.error(`PDF Error: ${msg}. Try re-uploading your resume as a text-based PDF.`);
+  } else if (err.response?.status === 429) {
+    toast.error('OpenAI rate limit reached. Please wait a few minutes and try again.');
+  } else if (err.response?.status === 400 && msg.includes('No resume')) {
+    toast.error('No resume found. Please upload your resume in Profile first.');
+  } else {
+    toast.error(`Analysis failed: ${msg}`);
+  }
+}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
   };
 
   const a   = result?.analysis;
@@ -113,6 +155,10 @@ export default function AIResumePage() {
       <div className="card p-6 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
             <label className="label">Company <span className="text-dark-600">(optional)</span></label>
             <select className="input" value={selCo} onChange={e => { setSelCo(e.target.value); setSelRole(''); }}>
               <option value="">General / No JD Analysis</option>
@@ -137,7 +183,11 @@ export default function AIResumePage() {
         </div>
         <div className="flex gap-3">
           <button onClick={() => analyze(false)} disabled={loading || !user?.resumeURL} className="btn-primary flex-1 justify-center py-3">
+<<<<<<< HEAD
             {loading ? <><Loader2 className="w-4 h-4 animate-spin"/>Running RAG pipeline...</> : <><Sparkles className="w-4 h-4"/>Analyze Resume</>}
+=======
+            {loading ? <><Loader2 className="w-4 h-4 animate-spin"/>Running RAG Analysis pipeline...</> : <><Sparkles className="w-4 h-4"/>Analyze Resume</>}
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
           </button>
           {result && (
             <button onClick={() => analyze(true)} disabled={loading} className="btn-secondary px-4" title="Force fresh analysis">
@@ -388,7 +438,11 @@ export default function AIResumePage() {
             </div>
             <div className="flex-1">
               <p className="font-medium text-white">Ready to prep for the interview?</p>
+<<<<<<< HEAD
               <p className="text-dark-500 text-sm">Generate role-specific questions, coding problems & a 14-day roadmap</p>
+=======
+              <p className="text-dark-500 text-sm">Generate role-specific questions, coding problems & a roadmap</p>
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
             </div>
             <Link href="/student/interview-prep" className="btn-primary text-sm shrink-0">
               Prep Now <ArrowRight className="w-4 h-4"/>

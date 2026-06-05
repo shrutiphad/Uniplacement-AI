@@ -20,7 +20,11 @@ export default function LoginPage() {
       setValue('email', 'admin@uniplacement.ai');
       setValue('password', 'Admin@123456');
     } else {
+<<<<<<< HEAD
       setValue('email', 'arjun@student.edu');
+=======
+      setValue('email', 'shruti@gmail.com');
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
       setValue('password', 'Student@123');
     }
   };
@@ -32,7 +36,11 @@ export default function LoginPage() {
       toast.success(`Welcome back, ${user.name.split(' ')[0]}!`);
       router.push(user.role === 'admin' ? '/admin/dashboard' : '/student/dashboard');
     } catch (err) {
+<<<<<<< HEAD
       toast.error(err.response?.data?.message || 'Login failed. Please try again.');
+=======
+      toast.error(err.response?.data?.message || 'Student does not exist. Please try again.');
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
     } finally {
       setLoading(false);
     }
@@ -50,7 +58,11 @@ export default function LoginPage() {
             <span className="font-display font-bold text-xl text-white">UniPlacement<span className="text-brand-400"> AI</span></span>
           </Link>
           <h1 className="font-display text-3xl font-bold text-white">Welcome back</h1>
+<<<<<<< HEAD
           <p className="text-dark-400 mt-2 text-sm">Sign in to your account to continue</p>
+=======
+          <p className="text-dark-400 mt-2 text-sm">Login to your account to continue</p>
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
         </div>
 
         <div className="card p-3 mb-5 flex gap-2">
@@ -68,7 +80,11 @@ export default function LoginPage() {
               <label className="label">Email address</label>
               <input
                 type="email"
+<<<<<<< HEAD
                 placeholder="you@university.edu"
+=======
+                placeholder="you@university.com"
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
                 className={errors.email ? 'input-error' : 'input'}
                 {...register('email', {
                   required: 'Email is required',
@@ -97,9 +113,15 @@ export default function LoginPage() {
 
             <button type="submit" disabled={loading} className="btn-primary w-full justify-center py-3 mt-2">
               {loading ? (
+<<<<<<< HEAD
                 <><Loader2 className="w-4 h-4 animate-spin" /> Signing in...</>
               ) : (
                 <><LogIn className="w-4 h-4" /> Sign In</>
+=======
+                <><Loader2 className="w-4 h-4 animate-spin" /> Login in...</>
+              ) : (
+                <><LogIn className="w-4 h-4" /> Login</>
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
               )}
             </button>
           </form>

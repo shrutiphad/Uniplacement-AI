@@ -24,7 +24,11 @@ const STUDENT_LINKS = [
   { href: '/student/companies',      icon: Building2,        label: 'Companies' },
   { href: '/student/applications',   icon: FileText,         label: 'My Applications' },
   { href: '/student/ai-resume',      icon: Sparkles,         label: 'AI Resume', badge: 'AI' },
+<<<<<<< HEAD
   { href: '/student/interview-prep', icon: BookOpen,         label: 'Interview Prep', badge: 'AI' },
+=======
+   { href: '/student/interview-prep', icon: BookOpen,         label: 'Interview Prep', badge: 'AI' },
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
   // { href: '/student/leaderboard',    icon: Trophy,           label: 'Leaderboard' },
   { href: '/student/profile',        icon: Settings,         label: 'Profile' },
 ];
@@ -32,6 +36,10 @@ const STUDENT_LINKS = [
 export default function Sidebar() {
   const pathname = usePathname();
   const { user, logout, isAdmin } = useAuth();
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
   const links = isAdmin ? ADMIN_LINKS : STUDENT_LINKS;
 
   return (

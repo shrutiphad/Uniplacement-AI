@@ -2,7 +2,17 @@ import axios from 'axios';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
+<<<<<<< HEAD
 const api = axios.create({ baseURL: API_URL, headers: { 'Content-Type': 'application/json' } });
+=======
+
+
+const api = axios.create({ 
+  baseURL: API_URL, 
+  headers: { 'Content-Type': 'application/json' },
+  // withCredentials: true,  
+});
+>>>>>>> 86838480ddaa8475541949c790340f60bf2c49a6
 
 api.interceptors.request.use(
   (config) => {
