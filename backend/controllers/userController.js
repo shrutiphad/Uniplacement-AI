@@ -3,6 +3,7 @@ const { cloudinary, upload } = require('../config/cloudinary');
 const { successResponse, errorResponse } = require('../utils/response');
 
 //  Update Profile 
+
 exports.updateProfile = async (req, res, next) => {
   try {
     const { name, department, semester, cgpa, skills, bio, linkedIn, github, phone } = req.body;
