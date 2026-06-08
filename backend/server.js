@@ -12,6 +12,11 @@ const rateLimit = require('express-rate-limit');
 
 dotenv.config();
 
+if (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET) {
+  console.error('JWT_SECRET and JWT_REFRESH_SECRET must be set in environment');
+  process.exit(1);
+}
+
 const authRoutes         = require('./routes/authRoutes');
 const userRoutes         = require('./routes/userRoutes');
 const companyRoutes      = require('./routes/companyRoutes');

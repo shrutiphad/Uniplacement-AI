@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const { cloudinary, upload } = require('../config/cloudinary');
 const { successResponse, errorResponse } = require('../utils/response');
 
@@ -19,10 +19,11 @@ exports.updateProfile = async (req, res, next) => {
     if (github) updateData.github = github;
     if (phone) updateData.phone = phone;
 
-    const user = await User.findByIdAndUpdate(req.user._id, updateData, {
+    const user = await User.findByIdAndUpdate(req.user.id, updateData, {
       new: true,
       runValidators: true,
     });
+    if (!user) return errorResponse(res, 'User not found', 404);
 
     // Recalculate profile completeness
     user.isProfileComplete = user.checkProfileComplete();
@@ -39,7 +40,8 @@ exports.uploadResume = async (req, res, next) => {
   try {
     if (!req.file) return errorResponse(res, 'No file uploaded', 400);
 
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id);
+    if (!user) return errorResponse(res, 'User not found', 404);
 
     // Delete old resume from Cloudinary if exists
     if (user.resumePublicId) {

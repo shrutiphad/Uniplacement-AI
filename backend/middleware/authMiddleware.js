@@ -1,5 +1,5 @@
 const { verifyAccessToken } = require('../utils/jwt');
-const User = require('../models/user');
+const User = require('../models/User');
 const { errorResponse } = require('../utils/response');
 
 //  Authenticate JWT 
@@ -18,7 +18,7 @@ const authenticate = async (req, res, next) => {
       return errorResponse(res, 'User not found. Token invalid.', 401);
     }
 
-    req.user = user;
+    req.user = { id: user._id, role: user.role };
     next();
   } catch (error) {
     if (error.name === 'TokenExpiredError') {
@@ -31,6 +31,9 @@ const authenticate = async (req, res, next) => {
 //  Role-Based Access Control 
 const authorize = (...roles) => {
   return (req, res, next) => {
+    if (!req.user) {
+      return errorResponse(res, 'Access denied. Authentication required.', 401);
+    }
     if (!roles.includes(req.user.role)) {
       return errorResponse(res, `Access denied. Required role: ${roles.join(' or ')}`, 403);
     }

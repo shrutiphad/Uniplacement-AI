@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/User');
 const { generateAccessToken, generateRefreshToken, verifyRefreshToken } = require('../utils/jwt');
 const { successResponse, errorResponse } = require('../utils/response');
 
@@ -89,13 +89,23 @@ exports.refreshToken = async (req, res, next) => {
     const newAccessToken = generateAccessToken({ id: user._id, role: user.role });
     const newRefreshToken = generateRefreshToken({ id: user._id });
 
-    user.refreshToken = newRefreshToken;
-    await user.save({ validateBeforeSave: false });
+    const updated = await User.findOneAndUpdate(
+      { _id: user._id, refreshToken },
+      { refreshToken: newRefreshToken },
+      { new: true }
+    );
+
+    if (!updated) {
+      return errorResponse(res, 'Invalid refresh token', 401);
+    }
 
     return successResponse(res, { accessToken: newAccessToken, refreshToken: newRefreshToken }, 'Token refreshed');
   } catch (error) {
     if (error.name === 'TokenExpiredError') {
       return errorResponse(res, 'Refresh token expired. Please login again.', 401);
+    }
+    if (error.name === 'JsonWebTokenError') {
+      return errorResponse(res, 'Invalid refresh token', 401);
     }
     next(error);
   }
@@ -104,11 +114,7 @@ exports.refreshToken = async (req, res, next) => {
 //  Logout 
 exports.logout = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user._id);
-    if (user) {
-      user.refreshToken = null;
-      await user.save({ validateBeforeSave: false });
-    }
+    await User.findByIdAndUpdate(req.user.id, { refreshToken: null });
     return successResponse(res, {}, 'Logged out successfully');
   } catch (error) {
     next(error);
@@ -118,7 +124,8 @@ exports.logout = async (req, res, next) => {
 //  Get Current User 
 exports.getMe = async (req, res, next) => {
   try {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id).select('-password -refreshToken');
+    if (!user) return errorResponse(res, 'User not found', 404);
     return successResponse(res, { user }, 'User fetched successfully');
   } catch (error) {
     next(error);

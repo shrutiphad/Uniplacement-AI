@@ -14,7 +14,7 @@ const createNotification = async (userId, { type, title, message, link, meta }) 
 exports.getNotifications = async (req, res, next) => {
   try {
     const { page = 1, limit = 20, unreadOnly } = req.query;
-    const query = { userId: req.user._id };
+    const query = { userId: req.user.id };
     if (unreadOnly === 'true') query.read = false;
 
     const [notifications, unreadCount] = await Promise.all([
@@ -22,7 +22,7 @@ exports.getNotifications = async (req, res, next) => {
         .sort({ createdAt: -1 })
         .skip((page - 1) * limit)
         .limit(Number(limit)),
-      Notification.countDocuments({ userId: req.user._id, read: false }),
+      Notification.countDocuments({ userId: req.user.id, read: false }),
     ]);
 
     return successResponse(res, { notifications, unreadCount });
@@ -32,7 +32,7 @@ exports.getNotifications = async (req, res, next) => {
 // PUT /api/notifications/:id/read
 exports.markRead = async (req, res, next) => {
   try {
-    await Notification.findOneAndUpdate({ _id: req.params.id, userId: req.user._id }, { read: true });
+    await Notification.findOneAndUpdate({ _id: req.params.id, userId: req.user.id }, { read: true });
     return successResponse(res, {}, 'Marked as read');
   } catch (error) { next(error); }
 };
@@ -40,7 +40,7 @@ exports.markRead = async (req, res, next) => {
 // PUT /api/notifications/read-all
 exports.markAllRead = async (req, res, next) => {
   try {
-    await Notification.updateMany({ userId: req.user._id, read: false }, { read: true });
+    await Notification.updateMany({ userId: req.user.id, read: false }, { read: true });
     return successResponse(res, {}, 'All notifications marked as read');
   } catch (error) { next(error); }
 };
@@ -48,7 +48,7 @@ exports.markAllRead = async (req, res, next) => {
 // DELETE /api/notifications/:id
 exports.deleteNotification = async (req, res, next) => {
   try {
-    await Notification.findOneAndDelete({ _id: req.params.id, userId: req.user._id });
+    await Notification.findOneAndDelete({ _id: req.params.id, userId: req.user.id });
     return successResponse(res, {}, 'Notification deleted');
   } catch (error) { next(error); }
 };

@@ -1,11 +1,11 @@
 const Company = require('../models/company');
-const User = require('../models/user');
+const User = require('../models/User');
 const { successResponse, errorResponse } = require('../utils/response');
 
 //  Create Company (Admin) 
 exports.createCompany = async (req, res, next) => {
   try {
-    const company = await Company.create({ ...req.body, createdBy: req.user._id });
+    const company = await Company.create({ ...req.body, createdBy: req.user.id });
     return successResponse(res, { company }, 'Company created successfully', 201);
   } catch (error) {
     next(error);
@@ -121,7 +121,7 @@ exports.postUpdate = async (req, res, next) => {
   try {
     const company = await Company.findById(req.params.id);
     if (!company) return errorResponse(res, 'Company not found', 404);
-    company.updates.push({ ...req.body, postedBy: req.user._id });
+    company.updates.push({ ...req.body, postedBy: req.user.id });
     await company.save();
     return successResponse(res, { company }, 'Update posted');
   } catch (error) {
@@ -135,7 +135,8 @@ exports.checkEligibility = async (req, res, next) => {
     const company = await Company.findById(req.params.id);
     if (!company) return errorResponse(res, 'Company not found', 404);
 
-    const student = req.user;
+    const student = await User.findById(req.user.id);
+    if (!student) return errorResponse(res, 'User not found', 404);
     const eligibilityMap = {};
 
     company.roles.forEach((role) => {

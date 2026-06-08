@@ -12,7 +12,7 @@ const { generateAdvancedInterviewPrep } = require('../services/interviewPrepServ
 const { mockInterviewChat } = require('../services/aiService');
 
 const Company      = require('../models/company');
-const User         = require('../models/user');
+const User         = require('../models/User');
 const Application  = require('../models/application');
 const ResumeAnalysis = require('../models/resumeAnalysis');
 const JDAnalysis   = require('../models/jdAnalysis');
@@ -38,7 +38,7 @@ const parsePDFFromURL = async (url) => {
 exports.analyzeResume = async (req, res, next) => {
   try {
     const { companyId, roleId, applicationId, forceRefresh } = req.body;
-    const student = await User.findById(req.user._id);
+    const student = await User.findById(req.user.id);
     if (!student.resumeURL) return errorResponse(res, 'No resume uploaded. Go to Profile → Upload Resume.', 400);
 
     // Cache check
@@ -224,7 +224,7 @@ exports.generateInterviewPrep = async (req, res, next) => {
     const role = company.roles.id(roleId);
     if (!role) return errorResponse(res, 'Role not found', 404);
 
-    const student = await User.findById(req.user._id);
+    const student = await User.findById(req.user.id);
 
     const prep = await generateAdvancedInterviewPrep({
       roleTitle: role.roleTitle,
@@ -281,7 +281,7 @@ exports.findSimilarResumes = async (req, res, next) => {
 // GET /api/ai/my-analyses 
 exports.getMyAnalyses = async (req, res, next) => {
   try {
-    const analyses = await ResumeAnalysis.find({ studentId: req.user._id })
+    const analyses = await ResumeAnalysis.find({ studentId: req.user.id })
       .populate('companyId', 'name logo')
       .sort({ analyzedAt: -1 });
     return successResponse(res, { analyses });
@@ -301,7 +301,7 @@ exports.getMyAnalyses = async (req, res, next) => {
 // const { mockInterviewChat } = require('../services/aiService');
 
 // const Company      = require('../models/company');
-// const User         = require('../models/user');
+// const User         = require('../models/User');
 // const Application  = require('../models/application');
 // const ResumeAnalysis = require('../models/resumeAnalysis');
 // const JDAnalysis   = require('../models/jdAnalysis');
@@ -327,7 +327,7 @@ exports.getMyAnalyses = async (req, res, next) => {
 // exports.analyzeResume = async (req, res, next) => {
 //   try {
 //     const { companyId, roleId, applicationId, forceRefresh } = req.body;
-//     const student = await User.findById(req.user._id);
+//     const student = await User.findById(req.user.id);
 //     if (!student.resumeURL) return errorResponse(res, 'No resume uploaded. Go to Profile → Upload Resume.', 400);
 
 //     // Cache check
@@ -513,7 +513,7 @@ exports.getMyAnalyses = async (req, res, next) => {
 //     const role = company.roles.id(roleId);
 //     if (!role) return errorResponse(res, 'Role not found', 404);
 
-//     const student = await User.findById(req.user._id);
+//     const student = await User.findById(req.user.id);
 
 //     const prep = await generateAdvancedInterviewPrep({
 //       roleTitle: role.roleTitle,
@@ -570,7 +570,7 @@ exports.getMyAnalyses = async (req, res, next) => {
 // // GET /api/ai/my-analyses 
 // exports.getMyAnalyses = async (req, res, next) => {
 //   try {
-//     const analyses = await ResumeAnalysis.find({ studentId: req.user._id })
+//     const analyses = await ResumeAnalysis.find({ studentId: req.user.id })
 //       .populate('companyId', 'name logo')
 //       .sort({ analyzedAt: -1 });
 //     return successResponse(res, { analyses });

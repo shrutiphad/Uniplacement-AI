@@ -1,14 +1,15 @@
 const { notifyApplicationStatusChange } = require('../utils/notificationHelper');
 const Application = require('../models/application');
 const Company = require('../models/company');
-const User = require('../models/user');
+const User = require('../models/User');
 const { successResponse, errorResponse } = require('../utils/response');
 
 //  Apply to a Role 
 exports.applyToRole = async (req, res, next) => {
   try {
     const { companyId, roleId } = req.body;
-    const student = req.user;
+    const student = await User.findById(req.user.id);
+    if (!student) return errorResponse(res, 'User not found', 404);
 
     // Check profile completeness
     if (!student.resumeURL) {
@@ -64,7 +65,7 @@ exports.applyToRole = async (req, res, next) => {
 // ─── Get My Applications (Student) ───────────────────────
 exports.getMyApplications = async (req, res, next) => {
   try {
-    const applications = await Application.find({ studentId: req.user._id })
+    const applications = await Application.find({ studentId: req.user.id })
       .populate('companyId', 'name logo description driveSchedule')
       .sort({ appliedAt: -1 });
 
@@ -144,7 +145,7 @@ exports.getApplicationById = async (req, res, next) => {
     if (!application) return errorResponse(res, 'Application not found', 404);
 
     // Students can only view their own
-    if (req.user.role === 'student' && application.studentId._id.toString() !== req.user._id.toString()) {
+    if (req.user.role === 'student' && application.studentId._id.toString() !== req.user.id.toString()) {
       return errorResponse(res, 'Access denied', 403);
     }
 
@@ -157,7 +158,7 @@ exports.getApplicationById = async (req, res, next) => {
 //  Withdraw Application (Student) 
 exports.withdrawApplication = async (req, res, next) => {
   try {
-    const application = await Application.findOne({ _id: req.params.id, studentId: req.user._id });
+    const application = await Application.findOne({ _id: req.params.id, studentId: req.user.id });
     if (!application) return errorResponse(res, 'Application not found', 404);
     if (!['Applied', 'Under Review'].includes(application.status)) {
       return errorResponse(res, 'Cannot withdraw at this stage', 400);

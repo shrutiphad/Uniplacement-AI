@@ -1,6 +1,6 @@
 const Application = require('../models/application');
 const Company = require('../models/company');
-const User = require('../models/user');
+const User = require('../models/User');
 const { successResponse, errorResponse } = require('../utils/response');
 
 //  Admin: Overview Stats 
@@ -132,7 +132,10 @@ exports.getPlacementTrends = async (req, res, next) => {
 // Student: Personal Analytics 
 exports.getStudentAnalytics = async (req, res, next) => {
   try {
-    const studentId = req.user._id;
+    const student = await User.findById(req.user.id);
+    if (!student) return errorResponse(res, 'User not found', 404);
+
+    const studentId = student._id;
 
     const applications = await Application.find({ studentId })
       .populate('companyId', 'name logo roles');
@@ -146,7 +149,7 @@ exports.getStudentAnalytics = async (req, res, next) => {
 
     // Skill coverage: across all applied roles
     const allRequiredSkills = new Set();
-    const studentSkills = new Set(req.user.skills.map((s) => s.toLowerCase()));
+    const studentSkills = new Set(student.skills.map((s) => s.toLowerCase()));
     const matchedSkills = new Set();
 
     applications.forEach((app) => {
@@ -168,7 +171,7 @@ exports.getStudentAnalytics = async (req, res, next) => {
       : 0;
 
     // Readiness score
-    const readinessScore = req.user.readinessScore || 0;
+    const readinessScore = student.readinessScore || 0;
 
     return successResponse(res, {
       stats: { totalApplied, shortlisted, selected, avgFitScore, skillCoverage, readinessScore },
